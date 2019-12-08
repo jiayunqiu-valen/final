@@ -3,10 +3,8 @@
 #define Echopin 7
 Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 
-// The DC motor connected to M1
 Adafruit_DCMotor *leftMotor = AFMS.getMotor(1);
 
-// The DC motor connected to M2
 Adafruit_DCMotor *rightMotor = AFMS.getMotor(3);
 
 float distance;
@@ -18,8 +16,8 @@ void setup() {
   AFMS.begin();
   pinMode(Trigpin, OUTPUT);
   pinMode(Echopin, INPUT);
-  leftMotor->setSpeed(200);
-  rightMotor->setSpeed(200);
+  leftMotor->setSpeed(100);
+  rightMotor->setSpeed(100);
   Serial.println("Startup");
 }
 
@@ -55,13 +53,13 @@ void csb()
   dat = distance;
   if (dat > 10) 
   {
-    go();
+    right();
     
   }
   if (dat < 10) 
   {
    
-    right();
+    back();
   }
 }
 
